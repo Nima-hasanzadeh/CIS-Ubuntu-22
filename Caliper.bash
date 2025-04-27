@@ -473,7 +473,7 @@ function kex_algorithm {
 }
 
 function mac_algorithm {
- grep -q "^Macs" "$SSHD_CFG" 2> /dev/null || return
+ grep -qi "^Macs" "$SSHD_CFG" 2> /dev/null || return
 }
 
 
