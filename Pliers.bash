@@ -524,7 +524,7 @@ function cipher_algorithm {
 
 function kex_algorithm {
  if ! grep -q "^KexAlgorithms" "$SSHD_CFG" 2> /dev/null; then
-   echo 'KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellmangroup14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256' >> "$SSHD_CFG"
+   echo 'KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256' >> "$SSHD_CFG"
  fi
 }
 
@@ -1368,6 +1368,7 @@ echo_bold "##### 3.3.9 Ensure IPv6 router advertisements are not accepted "
   backup ${COMMONACCOUNT}
   backup ${COMMONAUTH}
   f_return package_install libpam-pwquality 
+  f_return package_install cracklib-runtime
   f_return replace_param  "minclass=" 4  ${PWQUAL_CNF}
   f_return replace_param  "minlen=" 14   ${PWQUAL_CNF}
 
